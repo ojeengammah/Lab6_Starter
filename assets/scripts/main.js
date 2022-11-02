@@ -42,7 +42,9 @@ function addRecipesToDocument(recipes) {
   //            each <recipe-card> with that recipe data using element.data = ...
   //            Append each element to <main>
   let main = document.getElementsByTagName("main")[0];
-  recipes.for(recipe => {
+  
+  // need to fix this
+  recipes.foreach(recipe => {
     let element = customElements.define("recipe-card", RecipeCard);
     element.data = recipe;
     main.appendChild(element);
