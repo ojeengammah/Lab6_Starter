@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', init);
 // Starts the program, all function calls trace back here
 function init() {
   // Get the recipes from localStorage
-  let recipes = getRecipesFromStorage();
+  let recipes = getRecipesFromStorage(); 
   // Add each recipe to the <main> element
   addRecipesToDocument(recipes);
   // Add the event listeners to the form elements
@@ -25,8 +25,7 @@ function getRecipesFromStorage() {
   // A9. TODO - Complete the functionality as described in this function
   //           header. It is possible in only a single line, but should
   //           be no more than a few lines.
-  return localStorage.getItem('recipes');
-  
+  return JSON.parse(localStorage.getItem('recipes')) || [];
 }
 
 /**
@@ -43,15 +42,13 @@ function addRecipesToDocument(recipes) {
   //            each <recipe-card> with that recipe data using element.data = ...
   //            Append each element to <main>
   let main = document.getElementsByTagName("main")[0];
-  
-  // need to fix this
-  recipes.forEach(recipe => {
-    let element = customElements.define("recipe-card", RecipeCard);
-    element.data = recipe;
+  for (let i = 0; i < recipes.length; i++) {
+    //let element = customElements.define("recipe-card", RecipeCard);
+    let element = document.createElement("recipe-card");
+    element.data = recipes[i];
     main.appendChild(element);
-  });
-}
-
+  }
+  };
 /**
  * Takes in an array of recipes, converts it to a string, and then
  * saves that string to 'recipes' in localStorage
@@ -103,7 +100,7 @@ function initFormHandler() {
   let dangerButton = document.getElementsByClassName("danger")[0];
 
   // B11. TODO - Add a click event listener to clear local storage button
-  danger.addEventListener("click", () => {
+  dangerButton.addEventListener("click", () => {
   // Steps B12 & B13 will occur inside the event listener from step B11
   // B12. TODO - Clear the local storage
     localStorage.clear();
