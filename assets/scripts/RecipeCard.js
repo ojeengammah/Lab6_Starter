@@ -1,11 +1,9 @@
 // RecipeCard.js
-
 class RecipeCard extends HTMLElement {
   // Called once when document.createElement('recipe-card') is called, or
   // the element is written into the DOM directly as <recipe-card>
   constructor() {
     super(); // Inheret everything from HTMLElement
-
     // EXPOSE - START (All expose numbers start with A)
     // A1. TODO - Attach the shadow DOM to this Web Component (leave the mode open)
     let shadow = this.attachShadow({ mode: "open" });
@@ -126,7 +124,6 @@ class RecipeCard extends HTMLElement {
     //           cardTemplate.html and the data passed in (You should only have one <article>,
     //           do not nest an <article> inside another <article>). You should use Template
     //           literals (template strings) and element.innerHTML for this.
-
      Shadow_article.innerHTML = `
       <img src="${data.imgSrc}"
         alt="${data.imgAlt}">
