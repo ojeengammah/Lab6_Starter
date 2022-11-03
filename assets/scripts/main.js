@@ -26,6 +26,7 @@ function getRecipesFromStorage() {
   //           header. It is possible in only a single line, but should
   //           be no more than a few lines.
   return localStorage.getItem('recipes');
+  
 }
 
 /**
@@ -44,7 +45,7 @@ function addRecipesToDocument(recipes) {
   let main = document.getElementsByTagName("main")[0];
   
   // need to fix this
-  recipes.foreach(recipe => {
+  recipes.forEach(recipe => {
     let element = customElements.define("recipe-card", RecipeCard);
     element.data = recipe;
     main.appendChild(element);
